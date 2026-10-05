@@ -9,6 +9,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 
 /* Geographic journey: Natural Earth outline with an independent South America inset. */
+.map-state-lines{fill:none;stroke:#a6b6d8;stroke-width:1.1;stroke-linejoin:round;pointer-events:none}:root[data-theme=dark] .map-state-lines{stroke:#516686}
 .journey-atlas{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
 .map-toolbar{padding:20px 28px;display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid var(--line)}
 .map-toolbar>span{font-family:Manrope,sans-serif;font-weight:700}.map-legend{display:flex;gap:24px;font-size:.8rem;color:var(--muted)}.map-legend span{display:flex;align-items:center;gap:9px}.map-legend i{width:28px;border-top:3px solid var(--blue)}.map-legend i.legend-branch{border-top:3px dashed #a86613}
