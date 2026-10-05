@@ -103,7 +103,7 @@ function syncJourneyPlayback() {
   journeyPlayButton.textContent = journeyAutoplay ? 'Ⅱ Pause' : '▶ Play';
   journeyPlayButton.setAttribute('aria-label', journeyAutoplay ? 'Pause automatic journey playback' : 'Resume automatic journey playback');
   document.querySelector('.journey-detail').setAttribute('aria-live', playing ? 'off' : 'polite');
-  if (playing) journeyTimer = setTimeout(() => stepJourney(1), 6000);
+  if (playing) journeyTimer = setTimeout(() => stepJourney(1), 3000);
 }
 journeyPlayButton.addEventListener('click', () => {
   journeyAutoplay = !journeyAutoplay;

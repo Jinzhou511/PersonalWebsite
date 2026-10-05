@@ -33,3 +33,6 @@
 
 .journey-playback{display:flex;align-items:center;gap:10px}.journey-navigation .journey-playback button{font-size:.75rem;padding:7px 10px;color:var(--blue)}
 @media(max-width:380px){.journey-navigation{padding:12px;gap:6px}.journey-navigation button{padding:8px}.journey-playback{gap:6px}}
+
+.journey-photo-window{min-width:0;display:flex;flex-direction:column}.journey-photo-dots{display:flex;justify-content:center;align-items:center;gap:2px;padding:8px 12px;background:var(--surface)}.journey-photo-dot{display:grid;place-items:center;width:32px;height:32px;border:0;background:transparent;border-radius:50%;padding:0}.journey-photo-dot span{display:block;width:7px;height:7px;border-radius:50%;background:var(--muted);opacity:.4;transition:background .2s,opacity .2s,transform .2s}.journey-photo-dot:hover span{opacity:.8}.journey-photo-dot.is-selected span{background:var(--blue);opacity:1;transform:scale(1.4)}.journey-photo-dot:focus-visible{outline:2px solid var(--blue);outline-offset:0}
+@media(min-width:601px) and (max-width:900px){.journey-photo-window .journey-media{height:auto;flex:1}}

@@ -10,9 +10,9 @@
   <meta property="og:type" content="website">
   <title>Jinzhou Zhao | Robotics & Embodied AI</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261004-auto">
+  <link rel="stylesheet" href="styles.css?v=20261005-dots">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
-  <script src="script.js?v=20261004-auto" defer></script>
+  <script src="script.js?v=20261005-dots" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -62,9 +62,12 @@
       </div>
       </div>
       <article class="journey-detail" aria-live="polite" aria-atomic="true">
+        <div class="journey-photo-window">
         <div class="journey-media">
         <div id="journey-photo-placeholder" class="journey-photo-placeholder" hidden><span>PHOTO COMING SOON</span><strong id="journey-placeholder-city"></strong><p>A moment from this stop will be added here.</p></div>
         <img id="journey-photo" src="assets/boston.webp" alt="Jinzhou presenting LiDAR mapping research with a mobile robot" width="600" height="400" loading="lazy">
+        </div>
+        <div class="journey-photo-dots" role="group" aria-label="Choose a journey photo"><button type="button" class="journey-photo-dot is-selected" data-stop="boston" aria-label="Show Boston, MA" title="Boston, MA" aria-pressed="true"><span></span></button><button type="button" class="journey-photo-dot" data-stop="pittsburgh" aria-label="Show Pittsburgh, PA" title="Pittsburgh, PA" aria-pressed="false"><span></span></button><button type="button" class="journey-photo-dot" data-stop="dallas" aria-label="Show Dallas, TX" title="Dallas, TX" aria-pressed="false"><span></span></button><button type="button" class="journey-photo-dot" data-stop="bay-area" aria-label="Show Bay Area, CA" title="Bay Area, CA" aria-pressed="false"><span></span></button><button type="button" class="journey-photo-dot" data-stop="detroit" aria-label="Show Detroit, MI" title="Detroit, MI" aria-pressed="false"><span></span></button><button type="button" class="journey-photo-dot" data-stop="columbia" aria-label="Show Columbia, MO" title="Columbia, MO" aria-pressed="false"><span></span></button><button type="button" class="journey-photo-dot" data-stop="orlando" aria-label="Show Orlando, FL" title="Orlando, FL" aria-pressed="false"><span></span></button><button type="button" class="journey-photo-dot" data-stop="sao-paulo" aria-label="Show São Paulo, SP" title="São Paulo, SP" aria-pressed="false"><span></span></button></div>
         </div>
         <div class="journey-story"><span id="journey-category" class="eyebrow">01 / Research & foundations</span><h3 id="journey-city">Boston, MA</h3><h4 id="journey-headline">Learning robots from the ground up</h4><p id="journey-description">Graduate work on LiDAR mapping, point clouds and path planning — building the mobile-robot foundations for everything that followed.</p><span id="journey-connection" class="journey-connection">Main journey · First stop</span></div>
         <div class="journey-navigation"><button type="button" id="journey-prev" aria-label="Previous location">← Previous</button><div class="journey-playback"><span id="journey-position">01 / 08</span><button type="button" id="journey-play" aria-label="Pause automatic journey playback">Ⅱ Pause</button></div><button type="button" id="journey-next" aria-label="Next location">Next →</button></div>
