@@ -1,7 +1,5 @@
 # Jinzhou Zhao — Personal Website
 
-A responsive personal portfolio and consulting website, based on the content and photos from https://jinzhouzhao.tfwgsites.com/.
-
 ## Preview locally
 
 ```sh
