@@ -29,3 +29,9 @@ GitHub Free supports Pages on public repositories. Private repository Pages avai
 - `assets/`: locally hosted photos and favicon.
 
 All asset URLs are relative, so the site works at both a repository subpath and a custom domain. Contact links open the visitor's email client; there is no backend or contact form. Google Fonts is optional; system fonts are used as a fallback. The original website remains independent of this deployment.
+
+## Journey map
+
+The interactive SVG map uses an equirectangular projection of the contiguous United States, with a separately scaled South America inset for São Paulo. City markers use geographic coordinates; connecting curves illustrate the journey rather than exact travel paths. The main route is Boston → Pittsburgh → Dallas → Bay Area. Branches connect Dallas with Detroit, Columbia (Missouri) and São Paulo (Brazil).
+
+Country outlines are derived from Natural Earth's public-domain 1:110m country dataset: https://www.naturalearthdata.com/about/terms-of-use/. Map geometry is inline in `index.html`; city details and selection behavior are in `script.js`. Branch descriptions do not assume work roles or project details not supplied by the owner.
