@@ -62,6 +62,7 @@ function selectJourneyStop(key) {
   document.querySelector('#journey-placeholder-city').textContent = stop.city;
   document.querySelector('#journey-position').textContent = `${String(journeyKeys.indexOf(key) + 1).padStart(2, '0')} / ${String(journeyKeys.length).padStart(2, '0')}`;
   if (stop.photo) { photo.src = stop.photo; photo.alt = stop.alt; }
+  syncJourneyPlayback();
   if (changed && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const detail = document.querySelector('.journey-detail');
     detail.getAnimations().forEach(animation => animation.cancel());
@@ -86,3 +87,50 @@ function stepJourney(direction) {
 }
 document.querySelector('#journey-prev').addEventListener('click', () => stepJourney(-1));
 document.querySelector('#journey-next').addEventListener('click', () => stepJourney(1));
+
+// Keep map selection and photo playback on a single clock.
+const journeyExplorer = document.querySelector('.journey-explorer');
+const journeyPlayButton = document.querySelector('#journey-play');
+const journeyMotionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+let journeyAutoplay = !journeyMotionPreference.matches;
+let journeyHovered = false;
+let journeyFocused = false;
+let journeyVisible = false;
+let journeyTimer;
+function syncJourneyPlayback() {
+  clearTimeout(journeyTimer);
+  const playing = journeyAutoplay && journeyVisible && !journeyHovered && !journeyFocused && !document.hidden;
+  journeyPlayButton.textContent = journeyAutoplay ? 'Ⅱ Pause' : '▶ Play';
+  journeyPlayButton.setAttribute('aria-label', journeyAutoplay ? 'Pause automatic journey playback' : 'Resume automatic journey playback');
+  document.querySelector('.journey-detail').setAttribute('aria-live', playing ? 'off' : 'polite');
+  if (playing) journeyTimer = setTimeout(() => stepJourney(1), 6000);
+}
+journeyPlayButton.addEventListener('click', () => {
+  journeyAutoplay = !journeyAutoplay;
+  syncJourneyPlayback();
+});
+journeyExplorer.addEventListener('pointerenter', event => {
+  if (event.pointerType === 'touch') return;
+  journeyHovered = true;
+  syncJourneyPlayback();
+});
+journeyExplorer.addEventListener('pointerleave', () => {
+  journeyHovered = false;
+  syncJourneyPlayback();
+});
+function syncJourneyFocus() {
+  journeyFocused = journeyExplorer.contains(document.activeElement) && document.activeElement !== journeyPlayButton;
+  syncJourneyPlayback();
+}
+journeyExplorer.addEventListener('focusin', syncJourneyFocus);
+journeyExplorer.addEventListener('focusout', () => queueMicrotask(syncJourneyFocus));
+document.addEventListener('visibilitychange', syncJourneyPlayback);
+journeyMotionPreference.addEventListener('change', event => {
+  if (event.matches) journeyAutoplay = false;
+  syncJourneyPlayback();
+});
+new IntersectionObserver(entries => {
+  journeyVisible = entries[0].isIntersecting;
+  syncJourneyPlayback();
+}, { threshold: 0.2 }).observe(journeyExplorer);
+syncJourneyPlayback();
