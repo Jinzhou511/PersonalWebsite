@@ -40,10 +40,14 @@ const journeyStops = {
   orlando: { city: 'Orlando, FL', category: 'Branch / United States', headline: 'The journey beyond the Bay Area, CA', description: 'My journey branches from the Bay Area, CA to Orlando, FL.', connection: 'Branch · Bay Area, CA to Orlando, FL' },
   'sao-paulo': { city: 'São Paulo, SP', category: 'Branch / Brazil', headline: 'A connection beyond the United States', description: 'The journey branches from Dallas, TX to São Paulo, SP. This stop appears in the separate South America inset.', connection: 'International branch · Dallas, TX to São Paulo, SP' }
 };
+const journeyKeys = Object.keys(journeyStops);
+let selectedJourneyKey = 'boston';
 const journeyControls = document.querySelectorAll('[data-stop]');
 function selectJourneyStop(key) {
   const stop = journeyStops[key];
   if (!stop) return;
+  const changed = selectedJourneyKey !== key;
+  selectedJourneyKey = key;
   journeyControls.forEach(control => {
     const selected = control.dataset.stop === key;
     control.classList.toggle('is-selected', selected);
@@ -54,8 +58,15 @@ function selectJourneyStop(key) {
   });
   const photo = document.querySelector('#journey-photo');
   photo.hidden = !stop.photo;
-  document.querySelector('.journey-detail').classList.toggle('without-photo', !stop.photo);
+  document.querySelector('#journey-photo-placeholder').hidden = Boolean(stop.photo);
+  document.querySelector('#journey-placeholder-city').textContent = stop.city;
+  document.querySelector('#journey-position').textContent = `${String(journeyKeys.indexOf(key) + 1).padStart(2, '0')} / ${String(journeyKeys.length).padStart(2, '0')}`;
   if (stop.photo) { photo.src = stop.photo; photo.alt = stop.alt; }
+  if (changed && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const detail = document.querySelector('.journey-detail');
+    detail.getAnimations().forEach(animation => animation.cancel());
+    detail.animate([{ opacity: .4, transform: 'translateY(6px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 300, easing: 'ease-out' });
+  }
 }
 journeyControls.forEach(control => {
   control.addEventListener('click', () => selectJourneyStop(control.dataset.stop));
@@ -68,3 +79,10 @@ journeyControls.forEach(control => {
     });
   }
 });
+
+function stepJourney(direction) {
+  const index = (journeyKeys.indexOf(selectedJourneyKey) + direction + journeyKeys.length) % journeyKeys.length;
+  selectJourneyStop(journeyKeys[index]);
+}
+document.querySelector('#journey-prev').addEventListener('click', () => stepJourney(-1));
+document.querySelector('#journey-next').addEventListener('click', () => stepJourney(1));

@@ -10,9 +10,9 @@
   <meta property="og:type" content="website">
   <title>Jinzhou Zhao | Robotics & Embodied AI</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261004-labels">
+  <link rel="stylesheet" href="styles.css?v=20261004-split">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
-  <script src="script.js?v=20261004-labels" defer></script>
+  <script src="script.js?v=20261004-split" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -33,6 +33,8 @@
     <div class="expertise" aria-label="Areas of expertise"><span>Robotics</span><span>Industrial automation</span><span>SLAM & LiDAR</span><span>Computer vision</span><span>Simulation</span><span>Embodied AI</span></div>
     <section id="journey" class="section-wrap section-space">
       <div class="section-heading"><div><span class="eyebrow">01 / The journey</span><h2>From writing the code<br>to owning the outcome.</h2></div><p>Four cities, three industries, one throughline: making robotics work for the people who depend on it.</p></div>
+      <div class="journey-explorer">
+      <div class="journey-map-panel">
       <div class="journey-atlas">
         <div class="map-toolbar"><span>A journey in robotics</span><div class="map-legend"><span><i class="legend-main"></i>Main journey</span><span><i class="legend-branch"></i>Journey branches</span></div></div>
         <div class="map-scroll" tabindex="0" aria-label="Journey map. Scroll horizontally on smaller screens."><svg class="journey-map" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" aria-labelledby="map-title map-description">
@@ -58,10 +60,16 @@
       <div class="journey-stop-list" aria-label="Journey locations">
         <button type="button" data-stop="boston" aria-pressed="true" class="is-selected">01 Boston, MA</button><button type="button" data-stop="pittsburgh" aria-pressed="false">02 Pittsburgh, PA</button><button type="button" data-stop="dallas" aria-pressed="false">03 Dallas, TX</button><button type="button" data-stop="bay-area" aria-pressed="false">04 Bay Area, CA</button><button type="button" data-stop="detroit" aria-pressed="false">Detroit, MI</button><button type="button" data-stop="columbia" aria-pressed="false">Columbia, MO</button><button type="button" data-stop="sao-paulo" aria-pressed="false">São Paulo, SP</button><button type="button" data-stop="orlando" aria-pressed="false">Orlando, FL</button>
       </div>
+      </div>
       <article class="journey-detail" aria-live="polite" aria-atomic="true">
+        <div class="journey-media">
+        <div id="journey-photo-placeholder" class="journey-photo-placeholder" hidden><span>PHOTO COMING SOON</span><strong id="journey-placeholder-city"></strong><p>A moment from this stop will be added here.</p></div>
         <img id="journey-photo" src="assets/boston.webp" alt="Jinzhou presenting LiDAR mapping research with a mobile robot" width="600" height="400" loading="lazy">
-        <div><span id="journey-category" class="eyebrow">01 / Research & foundations</span><h3 id="journey-city">Boston, MA</h3><h4 id="journey-headline">Learning robots from the ground up</h4><p id="journey-description">Graduate work on LiDAR mapping, point clouds and path planning — building the mobile-robot foundations for everything that followed.</p><span id="journey-connection" class="journey-connection">Main journey · First stop</span></div>
+        </div>
+        <div class="journey-story"><span id="journey-category" class="eyebrow">01 / Research & foundations</span><h3 id="journey-city">Boston, MA</h3><h4 id="journey-headline">Learning robots from the ground up</h4><p id="journey-description">Graduate work on LiDAR mapping, point clouds and path planning — building the mobile-robot foundations for everything that followed.</p><span id="journey-connection" class="journey-connection">Main journey · First stop</span></div>
+        <div class="journey-navigation"><button type="button" id="journey-prev" aria-label="Previous location">← Previous</button><span id="journey-position">01 / 08</span><button type="button" id="journey-next" aria-label="Next location">Next →</button></div>
       </article>
+      </div>
     </section>
     <section id="work" class="portfolio-section section-space"><div class="section-wrap">
       <div class="section-heading"><div><span class="eyebrow">02 / Selected work</span><h2>Ideas into systems.<br>Systems into impact.</h2></div><p>A selection of robotics, automation and community work. Detailed case studies are in progress.</p></div>
